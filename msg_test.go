@@ -1,4 +1,4 @@
-package msg
+package gomail
 
 import (
 	"log"
