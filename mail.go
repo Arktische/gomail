@@ -60,6 +60,7 @@ func (s *Sender) Configure() {
 	return
 }
 
+// ParseTemplate parse email template
 func (sw *SendWorker) ParseTemplate(fileName string, data interface{}) error {
 	t, err := template.ParseFiles(fileName)
 	if err != nil {
@@ -106,9 +107,7 @@ func Dial(addr string) (*smtp.Client, error) {
 	return smtp.NewClient(conn, host)
 }
 
-//SendMailUsingTLS 参考net/smtp的func SendMail()
-//使用net.Dial连接tls(ssl)端口时,smtp.NewClient()会卡住且不提示err
-//len(to)>1时,to[1]开始提示是密送
+//SendMailUsingTLS refer to func SendMail() in net/smtp
 func SendMailUsingTLS(addr string, auth smtp.Auth, from string,
 	to []string, msg []byte) (err error) {
 
